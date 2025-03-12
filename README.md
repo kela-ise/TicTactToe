@@ -35,7 +35,7 @@ A C# compiler (if running manually)
 
 Clone the repository:
 
-git clone https://github.com/yourusername/tic-tac-toe-game.git
+git clone https://github.com/kela-ise/tic-tac-toe-game.git
 cd tic-tac-toe-game
 
 Build the project:
