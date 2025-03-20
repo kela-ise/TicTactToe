@@ -30,7 +30,7 @@ namespace TicTactToe
                     if (cols < lastColumn) Console.Write("|");  // Print a vertical separator "|" between columns, but not after the last column
                 }
                 Console.WriteLine();
-                if (rows < lastRow) Console.WriteLine("---+---+---");  // Print a horizontal separator "---+---+---" between rows, but not after the last row
+                if (rows < lastRow) Console.WriteLine("--+--+--");  // Print a horizontal separator "---+---+---" between rows, but not after the last row
 
 
             }
