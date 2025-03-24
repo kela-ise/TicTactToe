@@ -6,11 +6,7 @@
         {
            
             UI.welcomeMessage();
-            const int GRID_ROWS = 3;
-            const int GRID_COLUMNS = 3;
-            char[,] grid = new char[GRID_ROWS, GRID_COLUMNS];
-
-
+            char[,] grid = new char[Logic.GRID_ROWS, Logic.GRID_COLUMNS];
             UI.displayGrid(grid); // Display the grid
         }
     }
