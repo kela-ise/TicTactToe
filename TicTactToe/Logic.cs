@@ -61,28 +61,16 @@ namespace TicTactToe
             return aiSymbol;  
         }
 
-        public static void PlayerMove(char[,] grid)
+        // NEW FUNCTION: Place the player's move into the grid
+        public static void ApplyPlayerMove(char[,] grid, int move)
         {
-            int move; 
-            while (true)  
+            int row = (move - MOVE_INDEX_OFFSET) / GRID_COLUMNS;
+            int col = (move - MOVE_INDEX_OFFSET) % GRID_COLUMNS;
+
+            if (grid[row, col] == EMPTY_CELL)
             {
-                Console.Write("Enter the number of the cell (1-9) where you want to place your move: ");
-                string input = Console.ReadLine(); 
-
-               
-                if (int.TryParse(input, out move) && move >= MIN_PLAYERS_MOVE && move <= MAX_PLAYERS_MOVE)  // Validate player's input, numbers btw 1-9
-                {
-                    int row = (move - MOVE_INDEX_OFFSET) / GRID_COLUMNS;  
-                    int col = (move - MOVE_INDEX_OFFSET) % GRID_COLUMNS;  
-                    if (grid[row, col] == EMPTY_CELL)  // Check if the cell is empty
-                    {
-                        grid[row, col] = playerSymbol;  // Place the player's symbol in the selected cell
-                        break;  // Exit the loop after a valid move
-                    }
-                }
-
-                Console.WriteLine("Invalid move! Try again."); 
-            }
+                grid[row, col] = playerSymbol; // Place the player's symbol in the selected cell
+            } 
         }
 
         public static void AIMove(char[,] grid)
