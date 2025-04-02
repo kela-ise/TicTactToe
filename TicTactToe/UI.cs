@@ -16,18 +16,22 @@ namespace TicTactToe
             Console.WriteLine($"NOTE: You'll be playing as 'X', and the AI will be 'O'.\n");
         }
 
+        // Display the message when the player wins
         public static void PlayersWinningNote()
         {
-            Console.WriteLine("Congratulations! You Won");
-        }
-        public static void AIWinningNote()
-        {
-            Console.WriteLine("Sorry you lost! AI Won");
+            Console.WriteLine("Congratulations! You won!");
         }
 
-        public static void DisplayGrid(char[,] grid) // Display the current state of the grid
+        // Display the message when the AI wins
+        public static void AIWinningNote()
         {
-            Console.WriteLine("Current Board:");
+            Console.WriteLine("AI wins! Better luck next time.");
+        }
+
+        // Display the current state of the grid
+        public static void DisplayGrid(char[,] grid)
+        {
+            Console.WriteLine("Current board:");
             int cellNumber = 1;  // To track the cell #
             int lastRow = Logic.GRID_ROWS - 1;
             int lastColumn = Logic.GRID_COLUMNS - 1;
@@ -56,7 +60,7 @@ namespace TicTactToe
             }
         }
 
-        // NEW FUNCTION: Request and validate player's move
+        // Get the player's move (with input validation)
         public static int GetPlayerMove(char[,] grid)
         {
             int move;
@@ -68,15 +72,13 @@ namespace TicTactToe
                 // Validate input (should be a number between 1-9 and correspond to an empty cell)
                 if (int.TryParse(input, out move) && move >= Logic.MIN_PLAYERS_MOVE && move <= Logic.MAX_PLAYERS_MOVE)
                 {
-                    return move; }
-
+                    return move;
+                }
                 else
-                { }
-
-                Console.WriteLine("Invalid move! Try again."); // Prompt user to try again
+                {
+                    Console.WriteLine("Invalid move! Try again."); // Prompt user to try again
+                }
             }
-
         }
     }
 }
-
