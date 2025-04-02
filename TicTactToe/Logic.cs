@@ -12,15 +12,12 @@ namespace TicTactToe
 {
     public static class Logic
     {
-      
-
         // Variables to store symbols X & O
         public static char playerSymbol;
         public static char aiSymbol;
         public static Random random = new Random();  // Random number generator for AI's move
 
-        // Initialize the grid with empty spaces
-        public static void InitializeGrid(char[,] grid)
+        public static void InitializeGrid(char[,] grid)  // Initialize the grid with empty spaces
         {
             for (int row = 0; row < Constant.GRID_ROWS; row++)
             {
@@ -31,27 +28,21 @@ namespace TicTactToe
             }
         }
 
-        // Initialize the player and AI symbols
-        public static void InitializePlayers()
+        public static void InitializePlayers()  // Initialize the player and AI symbols
         {
             playerSymbol = 'X';
             aiSymbol = 'O';
         }
-
-        // Return the player's symbol X
-        public static char GetPlayerSymbol()
+        public static char GetPlayerSymbol()  // Return the player's symbol X
         {
             return playerSymbol;
         }
-
-        // Return the AI's symbol O
-        public static char GetAISymbol()
+        public static char GetAISymbol()  // Return the AI's symbol O
         {
             return aiSymbol;
         }
 
-        // Place the player's move into the grid
-        public static void ApplyPlayerMove(char[,] grid, int move)
+        public static void ApplyPlayerMove(char[,] grid, int move)   // Place the player's move into the grid
         {
             int row = (move - Constant.MOVE_INDEX_OFFSET) / Constant.GRID_COLUMNS;
             int col = (move - Constant.MOVE_INDEX_OFFSET) % Constant.GRID_COLUMNS;
@@ -61,7 +52,6 @@ namespace TicTactToe
                 grid[row, col] = playerSymbol; // Place the player's symbol in the selected cell
             }
         }
-
         // AI's move - randomly selects an empty cell to place its symbol
         public static void AIMove(char[,] grid)
         {
@@ -79,13 +69,11 @@ namespace TicTactToe
                 }
             }
         }
-
-        // Check if there is a win for the given symbol (Player or AI)
-        public static bool CheckWin(char[,] grid, char symbol)
+        public static bool CheckWin(char[,] grid, char symbol)   // Check if there is a win for X/O (Player/AI)
         {
-            // Ensure at least enough moves have been made before checking for a winner
+            
             int movesMade = 0;
-            foreach (var cell in grid)
+            foreach (char cell in grid) // Ensure at least enough moves have been made before checking for a winner
             {
                 if (cell != Constant.EMPTY_CELL)
                 {
@@ -93,34 +81,57 @@ namespace TicTactToe
                 }
             }
 
-
-            if (movesMade < Constant.MIN_MOVE_FOR_WIN)   // Check if there are enough moves made to form a winner (at least 5 moves for a win)
+            if (movesMade < Constant.MIN_MOVE_FOR_WIN)   // Check if we have at least 5 moves to declare a win
             {
                 return false; // No winner possible yet
             }
 
+            return CheckHorizontalWins(grid, symbol) || CheckVerticalWins(grid, symbol) || CheckDiagonalWins(grid, symbol);
+        }
+        public static bool CheckHorizontalWins(char[,] grid, char symbol)
+        {
             for (int row = 0; row < Constant.GRID_ROWS; row++)  // Check rows/horizontal win
             {
-                if (grid[row, Constant.FIRST_COL] == symbol && grid[row, Constant.SECOND_COL] == symbol && grid[row, Constant.LAST_COL] == symbol)
+                if (grid[row, Constant.FIRST_COL] == symbol &&
+                    grid[row, Constant.SECOND_COL] == symbol &&
+                    grid[row, Constant.LAST_COL] == symbol)
+                {
                     return true; // Horizontal win
+                }
             }
-
-          
-            for (int col = 0; col < Constant.GRID_COLUMNS; col++)   // Check for columns/vertical win
+            return false;
+        }
+        public static bool CheckVerticalWins(char[,] grid, char symbol)// Check for columns/vertical win
+        {
+            for (int col = 0; col < Constant.GRID_COLUMNS; col++)   
             {
-                if (grid[Constant.FIRST_ROW, col] == symbol && grid[Constant.SECOND_ROW, col] == symbol && grid[Constant.LAST_ROW, col] == symbol)
+                if (grid[Constant.FIRST_ROW, col] == symbol &&
+                    grid[Constant.SECOND_ROW, col] == symbol &&
+                    grid[Constant.LAST_ROW, col] == symbol)
+                {
                     return true; // Vertical win
+                }
+            }
+            return false;
+        }
+
+        public static bool CheckDiagonalWins(char[,] grid, char symbol)
+        {
+            if (grid[Constant.FIRST_ROW, Constant.FIRST_COL] == symbol &&
+                grid[Constant.SECOND_ROW, Constant.SECOND_COL] == symbol &&
+                grid[Constant.LAST_ROW, Constant.LAST_COL] == symbol)
+            {
+                return true; // Top-left to bottom-right diagonal win
             }
 
-            // Check diagonals for a win 
-            if (grid[Constant.FIRST_ROW, Constant.FIRST_COL] == symbol && grid[Constant.SECOND_ROW, Constant.SECOND_COL] == symbol && grid[Constant.LAST_ROW, Constant.LAST_COL] == symbol)
-                return true; // Top-left to bottom-right diagonal win
-
-            if (grid[Constant.FIRST_ROW, Constant.LAST_COL] == symbol && grid[Constant.SECOND_ROW, Constant.SECOND_COL] == symbol && grid[Constant.LAST_ROW, Constant.FIRST_COL] == symbol)
+            if (grid[Constant.FIRST_ROW, Constant.LAST_COL] == symbol &&
+                grid[Constant.SECOND_ROW, Constant.SECOND_COL] == symbol &&
+                grid[Constant.LAST_ROW, Constant.FIRST_COL] == symbol)
+            {
                 return true; // Top-right to bottom-left diagonal win
+            }
 
-            return false; // No win found
+            return false;
         }
     }
 }
-
