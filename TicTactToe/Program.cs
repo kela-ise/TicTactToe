@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             UI.WelcomeMessage(); // Display the welcome message
-            char[,] grid = new char[Logic.GRID_ROWS, Logic.GRID_COLUMNS];  // Create a grid for the game state
+            char[,] grid = new char[Constant.GRID_ROWS, Constant.GRID_COLUMNS];  // Create a grid for the game state
             Logic.InitializeGrid(grid);  // Initialize the grid with empty spaces
 
             Logic.InitializePlayers(); // Initialize my players. player:X & AI:O)

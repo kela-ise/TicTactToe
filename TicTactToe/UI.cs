@@ -33,14 +33,14 @@ namespace TicTactToe
         {
             Console.WriteLine("Current board:");
             int cellNumber = 1;  // To track the cell #
-            int lastRow = Logic.GRID_ROWS - 1;
-            int lastColumn = Logic.GRID_COLUMNS - 1;
+            int lastRow = Constant.GRID_ROWS - 1;
+            int lastColumn = Constant.GRID_COLUMNS - 1;
 
-            for (int row = 0; row < Logic.GRID_ROWS; row++)
+            for (int row = 0; row < Constant.GRID_ROWS; row++)
             {
-                for (int col = 0; col < Logic.GRID_COLUMNS; col++)
+                for (int col = 0; col < Constant.GRID_COLUMNS; col++)
                 {
-                    if (grid[row, col] == Logic.EMPTY_CELL)  // If the cell is empty, display the # assigned to the cell
+                    if (grid[row, col] == Constant.EMPTY_CELL)  // If the cell is empty, display the # assigned to the cell
                     {
                         Console.Write($" {cellNumber} ");
                     }
@@ -70,7 +70,7 @@ namespace TicTactToe
                 string input = Console.ReadLine(); // Read user input
 
                 // Validate input (should be a number between 1-9 and correspond to an empty cell)
-                if (int.TryParse(input, out move) && move >= Logic.MIN_PLAYERS_MOVE && move <= Logic.MAX_PLAYERS_MOVE)
+                if (int.TryParse(input, out move) && move >= Constant.MIN_PLAYERS_MOVE && move <= Constant.MAX_PLAYERS_MOVE)
                 {
                     return move;
                 }
