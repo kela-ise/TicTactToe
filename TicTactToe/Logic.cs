@@ -93,13 +93,6 @@ namespace TicTactToe
                 }
             }
 
-            /*
-              if (movesMade < MIN_PLAYERS_MOVE + INDEX_OFFSET)   // Check if there are enough moves made to form a winner (at least 5 moves for a win)
-              {
-                  return false; // No winner possible yet
-              }
-
-             */
 
             if (movesMade < Constant.MIN_MOVE_FOR_WIN)   // Check if there are enough moves made to form a winner (at least 5 moves for a win)
             {

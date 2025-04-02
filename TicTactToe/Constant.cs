@@ -20,7 +20,7 @@ namespace TicTactToe
         public const int LAST_COL = GRID_COLUMNS - 1;  // Index for the last column
         public const int INDEX_OFFSET = 1;  // Used to replace magic numbers in the code
         public const int MIN_PLAYERS_MOVE = 1;
-        public const int MAX_PLAYERS_MOVE = 9;
+        public const int MAX_PLAYERS_MOVE = GRID_ROWS * GRID_COLUMNS;
         public const int DISPLAY_OFFSET = 1;
         public const int MOVE_INDEX_OFFSET = 1;
         public const int MIN_MOVE_FOR_WIN = 5;
