@@ -8,8 +8,6 @@
             char[,] grid = new char[Constant.GRID_ROWS, Constant.GRID_COLUMNS];  // Create a grid for the game state
             Logic.InitializeGrid(grid);  // Initialize the grid with empty spaces
 
-            Logic.InitializePlayers(); // Initialize my players. player:X & AI:O)
-
             while (true)  // Loop through until there's a win or game ends
             {
                 UI.DisplayGrid(grid);  // Display the grid
