@@ -11,7 +11,7 @@
             while (true)  // Loop through until there's a win or game ends
             {
                 UI.DisplayGrid(grid);  // Display the grid
-                int playerMove = UI.GetPlayerMove(grid);
+                int playerMove = UI.GetPlayerMove();
 
                 Logic.ApplyPlayerMove(grid, playerMove);  // Add the player's move to the grid
                 if (Logic.CheckWin(grid, Logic.GetPlayerSymbol()))  // Check if the player won

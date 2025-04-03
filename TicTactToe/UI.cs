@@ -61,7 +61,7 @@ namespace TicTactToe
         }
 
         // Get the player's move (with input validation)
-        public static int GetPlayerMove(char[,] grid)
+        public static int GetPlayerMove()
         {
             int move;
             while (true)
