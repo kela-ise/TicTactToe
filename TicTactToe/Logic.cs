@@ -11,10 +11,7 @@ using System;
 namespace TicTactToe
 {
     public static class Logic
-    {
-        // Variables to store symbols X & O
-        public static char playerSymbol;
-        public static char aiSymbol;
+    { 
         public static Random random = new Random();  // Random number generator for AI's move
 
         public static void InitializeGrid(char[,] grid)  // Initialize the grid with empty spaces
@@ -28,18 +25,13 @@ namespace TicTactToe
             }
         }
 
-        public static void InitializePlayers()  // Initialize the player and AI symbols
-        {
-            playerSymbol = 'X';
-            aiSymbol = 'O';
-        }
         public static char GetPlayerSymbol()  // Return the player's symbol X
         {
-            return playerSymbol;
+            return Constant.PLAYERS_SYMBOL;
         }
         public static char GetAISymbol()  // Return the AI's symbol O
         {
-            return aiSymbol;
+            return Constant.AI_SYMBOL;
         }
 
         public static void ApplyPlayerMove(char[,] grid, int move)   // Place the player's move into the grid
@@ -49,7 +41,7 @@ namespace TicTactToe
 
             if (grid[row, col] == Constant.EMPTY_CELL)
             {
-                grid[row, col] = playerSymbol; // Place the player's symbol in the selected cell
+                grid[row, col] = Constant.PLAYERS_SYMBOL; // Place the player's symbol in the selected cell
             }
         }
         // AI's move - randomly selects an empty cell to place its symbol
@@ -63,15 +55,15 @@ namespace TicTactToe
 
                 if (grid[rows, cols] == Constant.EMPTY_CELL)  // Check if the selected cell is empty
                 {
-                    Console.WriteLine($"AI placed '{aiSymbol}' at ({rows + Constant.DISPLAY_OFFSET}, {cols + Constant.DISPLAY_OFFSET})"); // Display where the move is placed
-                    grid[rows, cols] = aiSymbol;
+                    Console.WriteLine($"AI placed '{Constant.AI_SYMBOL}' at ({rows + Constant.DISPLAY_OFFSET}, {cols + Constant.DISPLAY_OFFSET})"); // Display where the move is placed
+                    grid[rows, cols] = Constant.AI_SYMBOL;
                     break;
                 }
             }
         }
         public static bool CheckWin(char[,] grid, char symbol)   // Check if there is a win for X/O (Player/AI)
         {
-            
+
             int movesMade = 0;
             foreach (char cell in grid) // Ensure at least enough moves have been made before checking for a winner
             {
@@ -103,7 +95,7 @@ namespace TicTactToe
         }
         public static bool CheckVerticalWins(char[,] grid, char symbol)// Check for columns/vertical win
         {
-            for (int col = 0; col < Constant.GRID_COLUMNS; col++)   
+            for (int col = 0; col < Constant.GRID_COLUMNS; col++)
             {
                 if (grid[Constant.FIRST_ROW, col] == symbol &&
                     grid[Constant.SECOND_ROW, col] == symbol &&

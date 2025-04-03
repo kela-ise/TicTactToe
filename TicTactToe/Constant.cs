@@ -24,5 +24,9 @@ namespace TicTactToe
         public const int DISPLAY_OFFSET = 1;
         public const int MOVE_INDEX_OFFSET = 1;
         public const int MIN_MOVE_FOR_WIN = 5;
+
+        // Constants to store symbols X & O
+        public const char PLAYERS_SYMBOL = 'X';
+        public static char AI_SYMBOL = 'O';
     }
 }

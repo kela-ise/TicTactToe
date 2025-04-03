@@ -13,7 +13,7 @@ namespace TicTactToe
         public static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Tic Tac Toe!");
-            Console.WriteLine($"NOTE: You'll be playing as {Logic.playerSymbol}, and the AI will be {Logic.aiSymbol}.\n");
+            Console.WriteLine($"NOTE: You'll be playing as {Constant.PLAYERS_SYMBOL}, and the AI will be {Constant.AI_SYMBOL}.\n");
         }
 
         // Display the message when the player wins
